@@ -1,8 +1,8 @@
 # connected-kettle
 Réalisation d'une bouilloire connecté
 
-Le projet consiste à coutroler une bouilloire à distance en radio, bluetooth  ou en wifi. 
-Grace à un capteur de température, vous pouvez controler la température.
+Le projet consiste à contrôler une bouilloire à distance en radio, bluetooth ou en Wi-Fi. Vous pouvez contrôler la température grâce au capteur présent dans la bouilloire.
+
 
 <p align="center">
   <img src="https://github.com/fred-sjtm/connected-kettle/blob/master/kettle-img/71D21OsbV0L._SL1000_.jpg?raw=true" height="200">
@@ -11,8 +11,7 @@ Grace à un capteur de température, vous pouvez controler la température.
 </p>
 
 
-Cette bouilloire est réalisé à l'aide d'un récepteur/Transmetteur radio 433kHz HC-12 et d'un pic 12f1840. La communication entre ces deux composants se fait en série donc le module radio peut être remplacé par un module bluetooth par examle HC-06 ou un module wifi. L'alimentation 5v et le capteur de température sont déjà présents dans la bouilloire.
-
+Cette bouilloire est réalisé à l'aide d'un récepteur/transmetteur radio 433 khz HC-12 et d'un pic 12f1840. La communication entre ces deux composants se fait en série donc le module radio peut être remplacé par un module bluetooth par exemple HC-06 ou un module Wi-Fi. L'alimentation 5v et le capteur de température sont déjà présents dans la bouilloire. la fonction de choix de température est donc géré par l'appui d'un des deux boutons.
 
 <p align="center" style="float:left;">
   <img src="https://github.com/fred-sjtm/connected-kettle/blob/master/kettle-img/HTB1SPBIKFXXXXaEXFXXq6xXFXXXr.jpg?raw=true" height="100">
@@ -20,11 +19,9 @@ Cette bouilloire est réalisé à l'aide d'un récepteur/Transmetteur radio 433k
   <img src="https://github.com/fred-sjtm/connected-kettle/blob/master/kettle-img/schema.jpg?raw=true" height="200">
 </p>
 
+Le principe est de bypasser les boutons avec le microcontrôleur. Un niveau 0 simule l'appuis d'un bouton reliées en pull-up. Le microcontrôleur ne donne pas la possibilité de sorties flottantes donc j'utilise deux résistances de 10k pour isoler les deux montages.
 
-Les deux composants sont placé dans le manche de la bouilloire. L'optimisation de la place est primordiale. J'ai rellié l'antenne radio à la partie métalique supérieur. 
-
-
-
+Les deux composants sont placés dans le manche de la bouilloire. L'optimisation de la place est primordiale. J'ai relié l'antenne radio à la partie métallique supérieure pour accroître la réception.
 
 <p align="center">
   <img src="https://github.com/fred-sjtm/connected-kettle/blob/master/kettle-img/20180514_232752.jpg?raw=true" height="100">
