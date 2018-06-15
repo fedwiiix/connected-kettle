@@ -33,3 +33,24 @@ Les deux composants sont placés dans le manche de la bouilloire. L'optimisation
   <img src="https://github.com/fred-sjtm/connected-kettle/blob/master/kettle-img/20180514_234149.jpg?raw=true" height="100">
 </p>
 
+# Control
+
+Pour controler le système, vous pouvez envoyer les commandes suivantes par radio avec par exemple le sytème suivant.
+
+<p align="center">
+  <img src="https://github.com/fred-sjtm/connected-kettle/blob/master/kettle-img/600px-HC12_diagram.png" height="100">
+</p>
+
+Commandes:
+  * eau60     
+    * reponse:    ok60|
+  * eau70     
+  ** reponse:    ok70|
+  * eau80     
+    * reponse:    ok80|
+  * eau90     
+    * reponse:    ok90|
+  * eauon     
+    * reponse:    okon|
+
+
