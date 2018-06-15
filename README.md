@@ -1,4 +1,4 @@
-# connected-kettle
+# Connected-kettle
 Réalisation d'une bouilloire connecté
 
 Le projet consiste à contrôler une bouilloire à distance en radio, bluetooth ou en Wi-Fi. Vous pouvez contrôler la température grâce au capteur présent dans la bouilloire.
