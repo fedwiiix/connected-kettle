@@ -1,0 +1,1666 @@
+
+
+Microchip Technology PIC LITE Macro Assembler V1.45 build -152302408 
+                                                                                               Mon May 14 20:46:43 2018
+
+Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160504
+     1                           	processor	12F1840
+     2                           	opt	pw 120
+     3                           	opt	lm
+     4                           	psect	stringtext1,global,class=STRCODE,delta=2
+     5                           	psect	stringtext2,global,class=STRCODE,delta=2
+     6                           	psect	stringtext3,global,class=STRCODE,delta=2
+     7                           	psect	stringtext4,global,class=STRCODE,delta=2
+     8                           	psect	stringtext5,global,class=STRCODE,delta=2
+     9                           	psect	stringtext6,global,class=STRCODE,delta=2
+    10                           	psect	stringtext7,global,class=STRCODE,delta=2
+    11                           	psect	stringtext8,global,class=STRCODE,delta=2
+    12                           	psect	stringtext9,global,class=STRCODE,delta=2
+    13                           	psect	stringtext10,global,class=STRCODE,delta=2
+    14                           	psect	stringtext11,global,class=STRCODE,delta=2
+    15                           	psect	cinit,global,class=CODE,merge=1,delta=2
+    16                           	psect	bssCOMMON,global,class=COMMON,space=1,delta=1
+    17                           	psect	bssBANK0,global,class=BANK0,space=1,delta=1
+    18                           	psect	clrtext,global,class=CODE,delta=2
+    19                           	psect	cstackCOMMON,global,class=COMMON,space=1,delta=1
+    20                           	psect	cstackBANK0,global,class=BANK0,space=1,delta=1
+    21                           	psect	maintext,global,class=CODE,merge=1,split=1,delta=2
+    22                           	psect	intentry,global,class=CODE,delta=2
+    23                           	psect	text2,local,class=CODE,merge=1,delta=2
+    24                           	psect	text3,local,class=CODE,merge=1,delta=2,group=2
+    25                           	psect	text4,local,class=CODE,merge=1,delta=2
+    26                           	psect	text5,local,class=CODE,merge=1,delta=2
+    27                           	dabs	1,0x7E,2
+    28  0000                     
+    29                           ; Version 1.45
+    30                           ; Generated 16/11/2017 GMT
+    31                           ; 
+    32                           ; Copyright © 2017, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    33                           ; All rights reserved.
+    34                           ; 
+    35                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+      +                          ip").
+    36                           ; 
+    37                           ; Redistribution and use in source and binary forms, with or without modification, are
+    38                           ; permitted provided that the following conditions are met:
+    39                           ; 
+    40                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+      +                          t of
+    41                           ;        conditions and the following disclaimer.
+    42                           ; 
+    43                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+      +                          list
+    44                           ;        of conditions and the following disclaimer in the documentation and/or other
+    45                           ;        materials provided with the distribution.
+    46                           ; 
+    47                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+      +                          is
+    48                           ;        software without specific prior written permission.
+    49                           ; 
+    50                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    51                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+      +                          OR
+    52                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+      +                          T,
+    53                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    54                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    55                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+      +                          RICT
+    56                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+      +                          SE OF
+    57                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    58                           ; 
+    59                           ; 
+    60                           ; Code-generator required, PIC12F1840 Definitions
+    61                           ; 
+    62                           ; SFR Addresses
+    63  0000                     	;# 
+    64  0001                     	;# 
+    65  0002                     	;# 
+    66  0003                     	;# 
+    67  0004                     	;# 
+    68  0005                     	;# 
+    69  0006                     	;# 
+    70  0007                     	;# 
+    71  0008                     	;# 
+    72  0009                     	;# 
+    73  000A                     	;# 
+    74  000B                     	;# 
+    75  000C                     	;# 
+    76  0011                     	;# 
+    77  0012                     	;# 
+    78  0015                     	;# 
+    79  0016                     	;# 
+    80  0016                     	;# 
+    81  0017                     	;# 
+    82  0018                     	;# 
+    83  0019                     	;# 
+    84  001A                     	;# 
+    85  001B                     	;# 
+    86  001C                     	;# 
+    87  001E                     	;# 
+    88  001F                     	;# 
+    89  008C                     	;# 
+    90  0091                     	;# 
+    91  0092                     	;# 
+    92  0095                     	;# 
+    93  0096                     	;# 
+    94  0097                     	;# 
+    95  0098                     	;# 
+    96  0099                     	;# 
+    97  009A                     	;# 
+    98  009B                     	;# 
+    99  009B                     	;# 
+   100  009C                     	;# 
+   101  009D                     	;# 
+   102  009E                     	;# 
+   103  010C                     	;# 
+   104  0111                     	;# 
+   105  0112                     	;# 
+   106  0115                     	;# 
+   107  0116                     	;# 
+   108  0117                     	;# 
+   109  0118                     	;# 
+   110  0119                     	;# 
+   111  011A                     	;# 
+   112  011B                     	;# 
+   113  011D                     	;# 
+   114  011D                     	;# 
+   115  018C                     	;# 
+   116  0191                     	;# 
+   117  0191                     	;# 
+   118  0192                     	;# 
+   119  0193                     	;# 
+   120  0193                     	;# 
+   121  0193                     	;# 
+   122  0194                     	;# 
+   123  0195                     	;# 
+   124  0196                     	;# 
+   125  0197                     	;# 
+   126  0199                     	;# 
+   127  019A                     	;# 
+   128  019B                     	;# 
+   129  019B                     	;# 
+   130  019B                     	;# 
+   131  019B                     	;# 
+   132  019C                     	;# 
+   133  019C                     	;# 
+   134  019D                     	;# 
+   135  019E                     	;# 
+   136  019F                     	;# 
+   137  020C                     	;# 
+   138  0211                     	;# 
+   139  0211                     	;# 
+   140  0212                     	;# 
+   141  0212                     	;# 
+   142  0213                     	;# 
+   143  0213                     	;# 
+   144  0214                     	;# 
+   145  0214                     	;# 
+   146  0215                     	;# 
+   147  0215                     	;# 
+   148  0215                     	;# 
+   149  0216                     	;# 
+   150  0216                     	;# 
+   151  0217                     	;# 
+   152  0217                     	;# 
+   153  0291                     	;# 
+   154  0291                     	;# 
+   155  0292                     	;# 
+   156  0293                     	;# 
+   157  0294                     	;# 
+   158  0295                     	;# 
+   159  0295                     	;# 
+   160  0296                     	;# 
+   161  0391                     	;# 
+   162  0392                     	;# 
+   163  0393                     	;# 
+   164  039A                     	;# 
+   165  039C                     	;# 
+   166  039D                     	;# 
+   167  039E                     	;# 
+   168  039F                     	;# 
+   169  0FE4                     	;# 
+   170  0FE5                     	;# 
+   171  0FE6                     	;# 
+   172  0FE7                     	;# 
+   173  0FE8                     	;# 
+   174  0FE9                     	;# 
+   175  0FEA                     	;# 
+   176  0FEB                     	;# 
+   177  0FED                     	;# 
+   178  0FEE                     	;# 
+   179  0FEF                     	;# 
+   180  000C                     _PORTA	set	12
+   181  008C                     _TXIF	set	140
+   182  008D                     _RCIF	set	141
+   183  0065                     _RA5	set	101
+   184  0064                     _RA4	set	100
+   185  005E                     _PEIE	set	94
+   186  005F                     _GIE	set	95
+   187  009D                     _ADCON0	set	157
+   188  0099                     _OSCCON	set	153
+   189  048C                     _TXIE	set	1164
+   190  048D                     _RCIE	set	1165
+   191  04AF                     _nWPUEN	set	1199
+   192  0465                     _TRISA5	set	1125
+   193  0464                     _TRISA4	set	1124
+   194  0463                     _TRISA3	set	1123
+   195  0462                     _TRISA2	set	1122
+   196  0461                     _TRISA1	set	1121
+   197  0460                     _TRISA0	set	1120
+   198  011D                     _APFCON	set	285
+   199  019A                     _TXREG	set	410
+   200  0199                     _RCREG	set	409
+   201  019B                     _SPBRG	set	411
+   202  018C                     _ANSELA	set	396
+   203  0CEC                     _CREN	set	3308
+   204  0CF5                     _TXEN	set	3317
+   205  0CEF                     _SPEN	set	3311
+   206  0CFB                     _BRG16	set	3323
+   207  0CF2                     _BRGH	set	3314
+   208  0CF4                     _SYNC	set	3316
+   209  1063                     _WPUA3	set	4195
+   210  1062                     _WPUA2	set	4194
+   211                           
+   212                           	psect	stringtext1
+   213  0210                     __pstringtext1:	
+   214  0210                     STR_1:	
+   215  0210  3465               	retlw	101	;'e'
+   216  0211  3461               	retlw	97	;'a'
+   217  0212  3475               	retlw	117	;'u'
+   218  0213  3436               	retlw	54	;'6'
+   219  0214  3430               	retlw	48	;'0'
+   220  0215  3400               	retlw	0
+   221                           
+   222                           	psect	stringtext2
+   223  0216                     __pstringtext2:	
+   224  0216                     STR_3:	
+   225  0216  3465               	retlw	101	;'e'
+   226  0217  3461               	retlw	97	;'a'
+   227  0218  3475               	retlw	117	;'u'
+   228  0219  3437               	retlw	55	;'7'
+   229  021A  3430               	retlw	48	;'0'
+   230  021B  3400               	retlw	0
+   231                           
+   232                           	psect	stringtext3
+   233  021C                     __pstringtext3:	
+   234  021C                     STR_5:	
+   235  021C  3465               	retlw	101	;'e'
+   236  021D  3461               	retlw	97	;'a'
+   237  021E  3475               	retlw	117	;'u'
+   238  021F  3438               	retlw	56	;'8'
+   239  0220  3430               	retlw	48	;'0'
+   240  0221  3400               	retlw	0
+   241                           
+   242                           	psect	stringtext4
+   243  0222                     __pstringtext4:	
+   244  0222                     STR_7:	
+   245  0222  3465               	retlw	101	;'e'
+   246  0223  3461               	retlw	97	;'a'
+   247  0224  3475               	retlw	117	;'u'
+   248  0225  3439               	retlw	57	;'9'
+   249  0226  3430               	retlw	48	;'0'
+   250  0227  3400               	retlw	0
+   251                           
+   252                           	psect	stringtext5
+   253  0228                     __pstringtext5:	
+   254  0228                     STR_9:	
+   255  0228  3465               	retlw	101	;'e'
+   256  0229  3461               	retlw	97	;'a'
+   257  022A  3475               	retlw	117	;'u'
+   258  022B  346F               	retlw	111	;'o'
+   259  022C  346E               	retlw	110	;'n'
+   260  022D  3400               	retlw	0
+   261                           
+   262                           	psect	stringtext6
+   263  022E                     __pstringtext6:	
+   264  022E                     STR_2:	
+   265  022E  346F               	retlw	111	;'o'
+   266  022F  346B               	retlw	107	;'k'
+   267  0230  3436               	retlw	54	;'6'
+   268  0231  3430               	retlw	48	;'0'
+   269  0232  347C               	retlw	124	;'|'
+   270  0233  3400               	retlw	0
+   271                           
+   272                           	psect	stringtext7
+   273  0234                     __pstringtext7:	
+   274  0234                     STR_4:	
+   275  0234  346F               	retlw	111	;'o'
+   276  0235  346B               	retlw	107	;'k'
+   277  0236  3437               	retlw	55	;'7'
+   278  0237  3430               	retlw	48	;'0'
+   279  0238  347C               	retlw	124	;'|'
+   280  0239  3400               	retlw	0
+   281                           
+   282                           	psect	stringtext8
+   283  023A                     __pstringtext8:	
+   284  023A                     STR_6:	
+   285  023A  346F               	retlw	111	;'o'
+   286  023B  346B               	retlw	107	;'k'
+   287  023C  3438               	retlw	56	;'8'
+   288  023D  3430               	retlw	48	;'0'
+   289  023E  347C               	retlw	124	;'|'
+   290  023F  3400               	retlw	0
+   291                           
+   292                           	psect	stringtext9
+   293  0240                     __pstringtext9:	
+   294  0240                     STR_8:	
+   295  0240  346F               	retlw	111	;'o'
+   296  0241  346B               	retlw	107	;'k'
+   297  0242  3439               	retlw	57	;'9'
+   298  0243  3430               	retlw	48	;'0'
+   299  0244  347C               	retlw	124	;'|'
+   300  0245  3400               	retlw	0
+   301                           
+   302                           	psect	stringtext10
+   303  0246                     __pstringtext10:	
+   304  0246                     STR_10:	
+   305  0246  346F               	retlw	111	;'o'
+   306  0247  346B               	retlw	107	;'k'
+   307  0248  346F               	retlw	111	;'o'
+   308  0249  346E               	retlw	110	;'n'
+   309  024A  347C               	retlw	124	;'|'
+   310  024B  3400               	retlw	0
+   311                           
+   312                           	psect	stringtext11
+   313  0000                     __pstringtext11:	
+   314  0215                     
+   315                           ; #config settings
+   316  0000                     
+   317                           	psect	cinit
+   318  012E                     start_initialization:	
+   319  012E                     __initialization:	
+   320                           
+   321                           ; Clear objects allocated to COMMON
+   322  012E  01FD               	clrf	__pbssCOMMON& (0+127)
+   323                           
+   324                           ; Clear objects allocated to BANK0
+   325  012F  3020               	movlw	low __pbssBANK0
+   326  0130  0084               	movwf	4
+   327  0131  3000               	movlw	high __pbssBANK0
+   328  0132  0085               	movwf	5
+   329  0133  3031               	movlw	49
+   330  0134  3182  224C         	fcall	clear_ram0
+   331  0136                     end_of_initialization:	
+   332                           ;End of C runtime variable initialization code
+   333                           
+   334  0136                     __end_of__initialization:	
+   335  0136  107E               	bcf	int$flags,0	;clear compiler interrupt flag (level 1)
+   336  0137  0020               	movlb	0
+   337  0138  3181  29CA         	ljmp	_main	;jump to C main() function
+   338                           
+   339                           	psect	bssCOMMON
+   340  007D                     __pbssCOMMON:	
+   341  007D                     _car:	
+   342  007D                     	ds	1
+   343                           
+   344                           	psect	bssBANK0
+   345  0020                     __pbssBANK0:	
+   346  0020                     _command:	
+   347  0020                     	ds	20
+   348  0034                     _chaine_a_emettre:	
+   349  0034                     	ds	17
+   350  0045                     _i:	
+   351  0045                     	ds	2
+   352  0047                     _reception:	
+   353  0047                     	ds	10
+   354                           
+   355                           	psect	clrtext
+   356  024C                     clear_ram0:	
+   357                           ;	Called with FSR0 containing the base address, and
+   358                           ;	WREG with the size to clear
+   359                           
+   360  024C  0064               	clrwdt	;clear the watchdog before getting into this loop
+   361  024D                     clrloop0:	
+   362  024D  0180               	clrf	0	;clear RAM location pointed to by FSR
+   363  024E  3101               	addfsr 0,1
+   364  024F  0B89               	decfsz	9,f	;Have we reached the end of clearing yet?
+   365  0250  2A4D               	goto	clrloop0	;have we reached the end yet?
+   366  0251  3400               	retlw	0	;all done for this memory range, return
+   367                           
+   368                           	psect	cstackCOMMON
+   369  0070                     __pcstackCOMMON:	
+   370  0070                     ?_bouilloire_mode:	
+   371  0070                     ??_bouilloire_mode:	
+   372                           ; 1 bytes @ 0x0
+   373                           
+   374  0070                     ?_COM_Puts:	
+   375                           ; 1 bytes @ 0x0
+   376                           
+   377  0070                     ?_liaison_serie:	
+   378                           ; 1 bytes @ 0x0
+   379                           
+   380  0070                     ?_strlen:	
+   381                           ; 1 bytes @ 0x0
+   382                           
+   383  0070                     ?_main:	
+   384                           ; 2 bytes @ 0x0
+   385                           
+   386  0070                     COM_Puts@s:	
+   387                           ; 2 bytes @ 0x0
+   388                           
+   389  0070                     strlen@s:	
+   390                           ; 2 bytes @ 0x0
+   391                           
+   392                           
+   393                           ; 2 bytes @ 0x0
+   394  0070                     	ds	2
+   395  0072                     ??_COM_Puts:	
+   396  0072                     ??_strlen:	
+   397                           ; 1 bytes @ 0x2
+   398                           
+   399  0072                     bouilloire_mode@val:	
+   400                           ; 1 bytes @ 0x2
+   401                           
+   402                           
+   403                           ; 1 bytes @ 0x2
+   404  0072                     	ds	1
+   405  0073                     bouilloire_mode@e:	
+   406                           
+   407                           ; 2 bytes @ 0x3
+   408  0073                     	ds	1
+   409  0074                     strlen@cp:	
+   410                           
+   411                           ; 2 bytes @ 0x4
+   412  0074                     	ds	2
+   413  0076                     ?_compare:	
+   414  0076                     compare@chaine2:	
+   415                           ; 2 bytes @ 0x6
+   416                           
+   417                           
+   418                           ; 2 bytes @ 0x6
+   419  0076                     	ds	2
+   420  0078                     ??_compare:	
+   421                           
+   422                           ; 1 bytes @ 0x8
+   423  0078                     	ds	2
+   424  007A                     compare@chaine1:	
+   425                           
+   426                           ; 1 bytes @ 0xA
+   427  007A                     	ds	1
+   428  007B                     compare@e:	
+   429                           
+   430                           ; 2 bytes @ 0xB
+   431  007B                     	ds	2
+   432                           
+   433                           	psect	cstackBANK0
+   434  0051                     __pcstackBANK0:	
+   435  0051                     ??_liaison_serie:	
+   436                           
+   437                           ; 1 bytes @ 0x0
+   438  0051                     	ds	3
+   439  0054                     ??_main:	
+   440                           
+   441                           	psect	maintext
+   442  01CA                     __pmaintext:	
+   443                           ; 1 bytes @ 0x3
+   444 ;;
+   445 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   446 ;;
+   447 ;; *************** function _main *****************
+   448 ;; Defined at:
+   449 ;;		line 46 in file "bouilloire_serie.c"
+   450 ;; Parameters:    Size  Location     Type
+   451 ;;		None
+   452 ;; Auto vars:     Size  Location     Type
+   453 ;;		None
+   454 ;; Return value:  Size  Location     Type
+   455 ;;                  2   86[None  ] int 
+   456 ;; Registers used:
+   457 ;;		wreg, status,2
+   458 ;; Tracked objects:
+   459 ;;		On entry : B1F/0
+   460 ;;		On exit  : 0/0
+   461 ;;		Unchanged: 0/0
+   462 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+   463 ;;      Params:         0       0       0       0
+   464 ;;      Locals:         0       0       0       0
+   465 ;;      Temps:          0       0       0       0
+   466 ;;      Totals:         0       0       0       0
+   467 ;;Total ram usage:        0 bytes
+   468 ;; Hardware stack levels required when called:    3
+   469 ;; This function calls:
+   470 ;;		Nothing
+   471 ;; This function is called by:
+   472 ;;		Startup code after reset
+   473 ;; This function uses a non-reentrant model
+   474 ;;
+   475                           
+   476                           
+   477                           ;psect for function _main
+   478  01CA                     _main:	
+   479                           
+   480                           ;bouilloire_serie.c: 47: OSCCON = 0x70;
+   481                           
+   482                           ;incstack = 0
+   483                           ; Regs used in _main: [wreg+status,2]
+   484  01CA  3070               	movlw	112
+   485  01CB  0021               	movlb	1	; select bank1
+   486  01CC  0099               	movwf	25	;volatile
+   487                           
+   488                           ;bouilloire_serie.c: 48: APFCON = 0x00;
+   489  01CD  0022               	movlb	2	; select bank2
+   490  01CE  019D               	clrf	29	;volatile
+   491                           
+   492                           ;bouilloire_serie.c: 49: ADCON0 = 0x00;
+   493  01CF  0021               	movlb	1	; select bank1
+   494  01D0  019D               	clrf	29	;volatile
+   495                           
+   496                           ;bouilloire_serie.c: 50: ANSELA = 0x00;
+   497  01D1  0023               	movlb	3	; select bank3
+   498  01D2  018C               	clrf	12	;volatile
+   499                           
+   500                           ;bouilloire_serie.c: 51: PORTA = 0x00;
+   501  01D3  0020               	movlb	0	; select bank0
+   502  01D4  018C               	clrf	12	;volatile
+   503                           
+   504                           ;bouilloire_serie.c: 54: TRISA0 = 0;
+   505  01D5  0021               	movlb	1	; select bank1
+   506  01D6  100C               	bcf	12,0	;volatile
+   507                           
+   508                           ;bouilloire_serie.c: 55: TRISA1 = 1;
+   509  01D7  148C               	bsf	12,1	;volatile
+   510                           
+   511                           ;bouilloire_serie.c: 56: TRISA2 = 1;
+   512  01D8  150C               	bsf	12,2	;volatile
+   513                           
+   514                           ;bouilloire_serie.c: 57: TRISA3 = 1;
+   515  01D9  158C               	bsf	12,3	;volatile
+   516                           
+   517                           ;bouilloire_serie.c: 58: TRISA4 = 0;
+   518  01DA  120C               	bcf	12,4	;volatile
+   519                           
+   520                           ;bouilloire_serie.c: 59: TRISA5 = 0;
+   521  01DB  128C               	bcf	12,5	;volatile
+   522                           
+   523                           ;bouilloire_serie.c: 62: WPUA2 = 1;
+   524  01DC  0024               	movlb	4	; select bank4
+   525  01DD  150C               	bsf	12,2	;volatile
+   526                           
+   527                           ;bouilloire_serie.c: 63: WPUA3 = 1;
+   528  01DE  158C               	bsf	12,3	;volatile
+   529                           
+   530                           ;bouilloire_serie.c: 64: nWPUEN=0;
+   531  01DF  0021               	movlb	1	; select bank1
+   532  01E0  1395               	bcf	21,7	;volatile
+   533                           
+   534                           ;bouilloire_serie.c: 67: SYNC = 0;
+   535  01E1  0023               	movlb	3	; select bank3
+   536  01E2  121E               	bcf	30,4	;volatile
+   537                           
+   538                           ;bouilloire_serie.c: 68: BRGH = 0;
+   539  01E3  111E               	bcf	30,2	;volatile
+   540                           
+   541                           ;bouilloire_serie.c: 69: BRG16 = 0;
+   542  01E4  119F               	bcf	31,3	;volatile
+   543                           
+   544                           ;bouilloire_serie.c: 70: SPBRG = 51;
+   545  01E5  3033               	movlw	51
+   546  01E6  009B               	movwf	27	;volatile
+   547                           
+   548                           ;bouilloire_serie.c: 72: SPEN = 1;
+   549  01E7  179D               	bsf	29,7	;volatile
+   550                           
+   551                           ;bouilloire_serie.c: 73: TXEN = 1;
+   552  01E8  169E               	bsf	30,5	;volatile
+   553                           
+   554                           ;bouilloire_serie.c: 74: CREN = 1;
+   555  01E9  161D               	bsf	29,4	;volatile
+   556                           
+   557                           ;bouilloire_serie.c: 76: GIE = 1;
+   558  01EA  178B               	bsf	11,7	;volatile
+   559                           
+   560                           ;bouilloire_serie.c: 77: PEIE = 1;
+   561  01EB  170B               	bsf	11,6	;volatile
+   562                           
+   563                           ;bouilloire_serie.c: 78: RCIE = 1;
+   564  01EC  0021               	movlb	1	; select bank1
+   565  01ED  1691               	bsf	17,5	;volatile
+   566                           
+   567                           ;bouilloire_serie.c: 80: RA4=1;
+   568  01EE  0020               	movlb	0	; select bank0
+   569  01EF  160C               	bsf	12,4	;volatile
+   570                           
+   571                           ;bouilloire_serie.c: 81: RA5=1;
+   572  01F0  168C               	bsf	12,5	;volatile
+   573  01F1                     l87:	
+   574                           ;bouilloire_serie.c: 83: while(1)
+   575                           
+   576                           
+   577                           ;bouilloire_serie.c: 84: {
+   578  01F1  29F1               	goto	l87
+   579  01F2                     __end_of_main:	
+   580                           
+   581                           	psect	intentry
+   582  0004                     __pintentry:	
+   583 ;; *************** function _liaison_serie *****************
+   584 ;; Defined at:
+   585 ;;		line 88 in file "bouilloire_serie.c"
+   586 ;; Parameters:    Size  Location     Type
+   587 ;;		None
+   588 ;; Auto vars:     Size  Location     Type
+   589 ;;		None
+   590 ;; Return value:  Size  Location     Type
+   591 ;;                  1    wreg      void 
+   592 ;; Registers used:
+   593 ;;		wreg, fsr0l, fsr0h, fsr1l, fsr1h, status,2, status,0, pclath, cstack
+   594 ;; Tracked objects:
+   595 ;;		On entry : 0/0
+   596 ;;		On exit  : 0/0
+   597 ;;		Unchanged: 0/0
+   598 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+   599 ;;      Params:         0       0       0       0
+   600 ;;      Locals:         0       0       0       0
+   601 ;;      Temps:          0       3       0       0
+   602 ;;      Totals:         0       3       0       0
+   603 ;;Total ram usage:        3 bytes
+   604 ;; Hardware stack levels used:    1
+   605 ;; Hardware stack levels required when called:    2
+   606 ;; This function calls:
+   607 ;;		_COM_Puts
+   608 ;;		_bouilloire_mode
+   609 ;;		_compare
+   610 ;; This function is called by:
+   611 ;;		Interrupt level 1
+   612 ;; This function uses a non-reentrant model
+   613 ;;
+   614                           
+   615  0004                     _liaison_serie:	
+   616                           
+   617                           ;incstack = 0
+   618  0004  147E               	bsf	126,0	;set compiler interrupt flag (level 1)
+   619                           
+   620                           ; Regs used in _liaison_serie: [wreg-fsr1h+status,2+status,0+pclath+cstack]
+   621  0005  3180               	pagesel	$
+   622  0006  0020               	movlb	0	; select bank0
+   623  0007  087F               	movf	127,w
+   624  0008  00D3               	movwf	??_liaison_serie+2
+   625                           
+   626                           ;bouilloire_serie.c: 90: if (RCIF==1)
+   627  0009  1E91               	btfss	17,5	;volatile
+   628  000A  28FF               	goto	i1l988
+   629                           
+   630                           ;bouilloire_serie.c: 91: {
+   631                           ;bouilloire_serie.c: 92: car = RCREG;
+   632  000B  0023               	movlb	3	; select bank3
+   633  000C  0819               	movf	25,w	;volatile
+   634  000D  0020               	movlb	0	; select bank0
+   635  000E  00D1               	movwf	??_liaison_serie
+   636  000F  0851               	movf	??_liaison_serie,w
+   637  0010  00FD               	movwf	_car
+   638                           
+   639                           ;bouilloire_serie.c: 94: if(car=='e' || car=='a' || car=='u' || car=='o' || car=='n' || 
+      +                          car=='0' || car=='6' || car=='7' || car=='8' || car=='9' || car=='|'){
+   640  0011  3065               	movlw	101
+   641  0012  067D               	xorwf	_car,w
+   642  0013  1903               	btfsc	3,2
+   643  0014  283D               	goto	i1l922
+   644  0015  3061               	movlw	97
+   645  0016  067D               	xorwf	_car,w
+   646  0017  1903               	btfsc	3,2
+   647  0018  283D               	goto	i1l922
+   648  0019  3075               	movlw	117
+   649  001A  067D               	xorwf	_car,w
+   650  001B  1903               	btfsc	3,2
+   651  001C  283D               	goto	i1l922
+   652  001D  306F               	movlw	111
+   653  001E  067D               	xorwf	_car,w
+   654  001F  1903               	btfsc	3,2
+   655  0020  283D               	goto	i1l922
+   656  0021  306E               	movlw	110
+   657  0022  067D               	xorwf	_car,w
+   658  0023  1903               	btfsc	3,2
+   659  0024  283D               	goto	i1l922
+   660  0025  3030               	movlw	48
+   661  0026  067D               	xorwf	_car,w
+   662  0027  1903               	btfsc	3,2
+   663  0028  283D               	goto	i1l922
+   664  0029  3036               	movlw	54
+   665  002A  067D               	xorwf	_car,w
+   666  002B  1903               	btfsc	3,2
+   667  002C  283D               	goto	i1l922
+   668  002D  3037               	movlw	55
+   669  002E  067D               	xorwf	_car,w
+   670  002F  1903               	btfsc	3,2
+   671  0030  283D               	goto	i1l922
+   672  0031  3038               	movlw	56
+   673  0032  067D               	xorwf	_car,w
+   674  0033  1903               	btfsc	3,2
+   675  0034  283D               	goto	i1l922
+   676  0035  3039               	movlw	57
+   677  0036  067D               	xorwf	_car,w
+   678  0037  1903               	btfsc	3,2
+   679  0038  283D               	goto	i1l922
+   680  0039  307C               	movlw	124
+   681  003A  067D               	xorwf	_car,w
+   682  003B  1D03               	btfss	3,2
+   683  003C  28FF               	goto	i1l988
+   684  003D                     i1l922:	
+   685                           
+   686                           ;bouilloire_serie.c: 95: reception[i]=car;
+   687  003D  087D               	movf	_car,w
+   688  003E  00D1               	movwf	??_liaison_serie
+   689  003F  0845               	movf	_i,w
+   690  0040  3E47               	addlw	(low (_reception| 0))& (0+255)
+   691  0041  0086               	movwf	6
+   692  0042  0187               	clrf	7
+   693  0043  0851               	movf	??_liaison_serie,w
+   694  0044  0081               	movwf	1
+   695                           
+   696                           ;bouilloire_serie.c: 96: i++;
+   697  0045  3001               	movlw	1
+   698  0046  07C5               	addwf	_i,f
+   699  0047  3000               	movlw	0
+   700  0048  3DC6               	addwfc	_i+1,f
+   701                           
+   702                           ;bouilloire_serie.c: 98: if(compare( &reception, "eau60")){
+   703  0049  3010               	movlw	low (STR_1| (0+32768))
+   704  004A  00F6               	movwf	compare@chaine2
+   705  004B  3082               	movlw	high (STR_1| (0+32768))
+   706  004C  00F7               	movwf	compare@chaine2+1
+   707  004D  3047               	movlw	(low (_reception| 0))& (0+255)
+   708  004E  3181  213A  3180   	fcall	_compare
+   709  0051  0876               	movf	?_compare,w
+   710  0052  0477               	iorwf	?_compare+1,w
+   711  0053  1903               	btfsc	3,2
+   712  0054  285D               	goto	i1l934
+   713                           
+   714                           ;bouilloire_serie.c: 99: bouilloire_mode(1);
+   715  0055  3001               	movlw	1
+   716  0056  3181  216D  3180   	fcall	_bouilloire_mode
+   717                           
+   718                           ;bouilloire_serie.c: 100: COM_Puts("ok60|");
+   719  0059  302E               	movlw	low (STR_2| (0+32768))
+   720  005A  00F0               	movwf	COM_Puts@s
+   721  005B  3082               	movlw	high (STR_2| (0+32768))
+   722  005C  2898               	goto	L2
+   723  005D                     i1l934:	
+   724                           ;bouilloire_serie.c: 102: }else if(compare( &reception, "eau70")){
+   725                           
+   726                           ;bouilloire_serie.c: 101: i=10;
+   727                           
+   728  005D  3016               	movlw	low (STR_3| (0+32768))
+   729  005E  00F6               	movwf	compare@chaine2
+   730  005F  3082               	movlw	high (STR_3| (0+32768))
+   731  0060  00F7               	movwf	compare@chaine2+1
+   732  0061  3047               	movlw	(low (_reception| 0))& (0+255)
+   733  0062  3181  213A  3180   	fcall	_compare
+   734  0065  0876               	movf	?_compare,w
+   735  0066  0477               	iorwf	?_compare+1,w
+   736  0067  1903               	btfsc	3,2
+   737  0068  2871               	goto	i1l942
+   738                           
+   739                           ;bouilloire_serie.c: 103: bouilloire_mode(2);
+   740  0069  3002               	movlw	2
+   741  006A  3181  216D  3180   	fcall	_bouilloire_mode
+   742                           
+   743                           ;bouilloire_serie.c: 104: COM_Puts("ok70|");
+   744  006D  3034               	movlw	low (STR_4| (0+32768))
+   745  006E  00F0               	movwf	COM_Puts@s
+   746  006F  3082               	movlw	high (STR_4| (0+32768))
+   747  0070  2898               	goto	L2
+   748  0071                     i1l942:	
+   749                           ;bouilloire_serie.c: 106: }else if(compare( &reception, "eau80")){
+   750                           
+   751                           ;bouilloire_serie.c: 105: i=10;
+   752                           
+   753  0071  301C               	movlw	low (STR_5| (0+32768))
+   754  0072  00F6               	movwf	compare@chaine2
+   755  0073  3082               	movlw	high (STR_5| (0+32768))
+   756  0074  00F7               	movwf	compare@chaine2+1
+   757  0075  3047               	movlw	(low (_reception| 0))& (0+255)
+   758  0076  3181  213A  3180   	fcall	_compare
+   759  0079  0876               	movf	?_compare,w
+   760  007A  0477               	iorwf	?_compare+1,w
+   761  007B  1903               	btfsc	3,2
+   762  007C  2885               	goto	i1l950
+   763                           
+   764                           ;bouilloire_serie.c: 107: bouilloire_mode(3);
+   765  007D  3003               	movlw	3
+   766  007E  3181  216D  3180   	fcall	_bouilloire_mode
+   767                           
+   768                           ;bouilloire_serie.c: 108: COM_Puts("ok80|");
+   769  0081  303A               	movlw	low (STR_6| (0+32768))
+   770  0082  00F0               	movwf	COM_Puts@s
+   771  0083  3082               	movlw	high (STR_6| (0+32768))
+   772  0084  2898               	goto	L2
+   773  0085                     i1l950:	
+   774                           ;bouilloire_serie.c: 110: }else if(compare( &reception, "eau90")){
+   775                           
+   776                           ;bouilloire_serie.c: 109: i=10;
+   777                           
+   778  0085  3022               	movlw	low (STR_7| (0+32768))
+   779  0086  00F6               	movwf	compare@chaine2
+   780  0087  3082               	movlw	high (STR_7| (0+32768))
+   781  0088  00F7               	movwf	compare@chaine2+1
+   782  0089  3047               	movlw	(low (_reception| 0))& (0+255)
+   783  008A  3181  213A  3180   	fcall	_compare
+   784  008D  0876               	movf	?_compare,w
+   785  008E  0477               	iorwf	?_compare+1,w
+   786  008F  1903               	btfsc	3,2
+   787  0090  289F               	goto	i1l958
+   788                           
+   789                           ;bouilloire_serie.c: 111: bouilloire_mode(4);
+   790  0091  3004               	movlw	4
+   791  0092  3181  216D  3180   	fcall	_bouilloire_mode
+   792                           
+   793                           ;bouilloire_serie.c: 112: COM_Puts("ok90|");
+   794  0095  3040               	movlw	low (STR_8| (0+32768))
+   795  0096  00F0               	movwf	COM_Puts@s
+   796  0097  3082               	movlw	high (STR_8| (0+32768))
+   797  0098                     L2:	
+   798  0098  00F1               	movwf	COM_Puts@s+1
+   799  0099  3181  219D  3180   	fcall	_COM_Puts
+   800                           
+   801                           ;bouilloire_serie.c: 113: i=10;
+   802  009C  300A               	movlw	10
+   803  009D  0020               	movlb	0	; select bank0
+   804  009E  28C3               	goto	L1
+   805  009F                     i1l958:	
+   806                           ;bouilloire_serie.c: 114: }else if(compare( &reception, "eauon")){
+   807                           
+   808  009F  3028               	movlw	low (STR_9| (0+32768))
+   809  00A0  00F6               	movwf	compare@chaine2
+   810  00A1  3082               	movlw	high (STR_9| (0+32768))
+   811  00A2  00F7               	movwf	compare@chaine2+1
+   812  00A3  3047               	movlw	(low (_reception| 0))& (0+255)
+   813  00A4  3181  213A  3180   	fcall	_compare
+   814  00A7  0876               	movf	?_compare,w
+   815  00A8  0477               	iorwf	?_compare+1,w
+   816  00A9  1903               	btfsc	3,2
+   817  00AA  28C6               	goto	i1l970
+   818                           
+   819                           ;bouilloire_serie.c: 115: COM_Puts("okon|");
+   820  00AB  3046               	movlw	low (STR_10| (0+32768))
+   821  00AC  00F0               	movwf	COM_Puts@s
+   822  00AD  3082               	movlw	high (STR_10| (0+32768))
+   823  00AE  00F1               	movwf	COM_Puts@s+1
+   824  00AF  3181  219D  3180   	fcall	_COM_Puts
+   825                           
+   826                           ;bouilloire_serie.c: 116: RA4=0;
+   827  00B2  0020               	movlb	0	; select bank0
+   828  00B3  120C               	bcf	12,4	;volatile
+   829                           
+   830                           ;bouilloire_serie.c: 117: _delay((unsigned long)((100)*(32000000/4000.0)));
+   831  00B4  3005               	movlw	5
+   832  00B5  0020               	movlb	0	; select bank0
+   833  00B6  00D2               	movwf	??_liaison_serie+1
+   834  00B7  300F               	movlw	15
+   835  00B8  00D1               	movwf	??_liaison_serie
+   836  00B9  30F1               	movlw	241
+   837  00BA                     u59_27:	
+   838  00BA  0B89               	decfsz	9,f
+   839  00BB  28BA               	goto	u59_27
+   840  00BC  0BD1               	decfsz	??_liaison_serie,f
+   841  00BD  28BA               	goto	u59_27
+   842  00BE  0BD2               	decfsz	??_liaison_serie+1,f
+   843  00BF  28BA               	goto	u59_27
+   844                           
+   845                           ;bouilloire_serie.c: 118: RA4=1;
+   846  00C0  0020               	movlb	0	; select bank0
+   847  00C1  160C               	bsf	12,4	;volatile
+   848                           
+   849                           ;bouilloire_serie.c: 119: i=10;
+   850  00C2  300A               	movlw	10
+   851  00C3                     L1:	
+   852  00C3  00C5               	movwf	_i
+   853  00C4  3000               	movlw	0
+   854  00C5  00C6               	movwf	_i+1
+   855  00C6                     i1l970:	
+   856                           
+   857                           ;bouilloire_serie.c: 120: }
+   858                           ;bouilloire_serie.c: 122: if(car=='|' || i>9){
+   859  00C6  307C               	movlw	124
+   860  00C7  067D               	xorwf	_car,w
+   861  00C8  1903               	btfsc	3,2
+   862  00C9  28D6               	goto	i1l974
+   863  00CA  0020               	movlb	0	; select bank0
+   864  00CB  0846               	movf	_i+1,w
+   865  00CC  3A80               	xorlw	128
+   866  00CD  00D1               	movwf	??_liaison_serie
+   867  00CE  3080               	movlw	128
+   868  00CF  0251               	subwf	??_liaison_serie,w
+   869  00D0  1D03               	skipz
+   870  00D1  28D4               	goto	u53_25
+   871  00D2  300A               	movlw	10
+   872  00D3  0245               	subwf	_i,w
+   873  00D4                     u53_25:	
+   874  00D4  1C03               	skipc
+   875  00D5  28FF               	goto	i1l988
+   876  00D6                     i1l974:	
+   877                           
+   878                           ;bouilloire_serie.c: 123: for(i=0;i<10;i++)
+   879  00D6  0020               	movlb	0	; select bank0
+   880  00D7  01C5               	clrf	_i
+   881  00D8  01C6               	clrf	_i+1
+   882  00D9  0846               	movf	_i+1,w
+   883  00DA  3A80               	xorlw	128
+   884  00DB  00D1               	movwf	??_liaison_serie
+   885  00DC  3080               	movlw	128
+   886  00DD  0251               	subwf	??_liaison_serie,w
+   887  00DE  1D03               	skipz
+   888  00DF  28E2               	goto	u54_25
+   889  00E0  300A               	movlw	10
+   890  00E1  0245               	subwf	_i,w
+   891  00E2                     u54_25:	
+   892  00E2  1803               	btfsc	3,0
+   893  00E3  28FC               	goto	i1l986
+   894  00E4                     i1l980:	
+   895                           
+   896                           ;bouilloire_serie.c: 124: reception[i]="";
+   897  00E4  3015               	movlw	(low ((STR_1+5)| (0+32768)))& (0+255)
+   898  00E5  0020               	movlb	0	; select bank0
+   899  00E6  00D1               	movwf	??_liaison_serie
+   900  00E7  0845               	movf	_i,w
+   901  00E8  3E47               	addlw	(low (_reception| 0))& (0+255)
+   902  00E9  0086               	movwf	6
+   903  00EA  0187               	clrf	7
+   904  00EB  0851               	movf	??_liaison_serie,w
+   905  00EC  0081               	movwf	1
+   906  00ED  3001               	movlw	1
+   907  00EE  07C5               	addwf	_i,f
+   908  00EF  3000               	movlw	0
+   909  00F0  3DC6               	addwfc	_i+1,f
+   910  00F1  0846               	movf	_i+1,w
+   911  00F2  3A80               	xorlw	128
+   912  00F3  00D1               	movwf	??_liaison_serie
+   913  00F4  3080               	movlw	128
+   914  00F5  0251               	subwf	??_liaison_serie,w
+   915  00F6  1D03               	skipz
+   916  00F7  28FA               	goto	u55_25
+   917  00F8  300A               	movlw	10
+   918  00F9  0245               	subwf	_i,w
+   919  00FA                     u55_25:	
+   920  00FA  1C03               	skipc
+   921  00FB  28E4               	goto	i1l980
+   922  00FC                     i1l986:	
+   923                           
+   924                           ;bouilloire_serie.c: 125: i=0;
+   925  00FC  0020               	movlb	0	; select bank0
+   926  00FD  01C5               	clrf	_i
+   927  00FE  01C6               	clrf	_i+1
+   928  00FF                     i1l988:	
+   929                           
+   930                           ;bouilloire_serie.c: 126: }
+   931                           ;bouilloire_serie.c: 127: }
+   932                           ;bouilloire_serie.c: 128: }
+   933                           ;bouilloire_serie.c: 129: if (TXIF && TXIE)
+   934  00FF  0020               	movlb	0	; select bank0
+   935  0100  1E11               	btfss	17,4	;volatile
+   936  0101  2927               	goto	i1l117
+   937  0102  0021               	movlb	1	; select bank1
+   938  0103  1E11               	btfss	17,4	;volatile
+   939  0104  2927               	goto	i1l117
+   940                           
+   941                           ;bouilloire_serie.c: 130: {
+   942                           ;bouilloire_serie.c: 131: i=0;
+   943  0105  0020               	movlb	0	; select bank0
+   944  0106  01C5               	clrf	_i
+   945  0107  01C6               	clrf	_i+1
+   946  0108                     i1l998:	
+   947                           
+   948                           ;bouilloire_serie.c: 138: car = chaine_a_emettre[i];
+   949  0108  0845               	movf	_i,w
+   950  0109  3E34               	addlw	(low (_chaine_a_emettre| 0))& (0+255)
+   951  010A  0086               	movwf	6
+   952  010B  0187               	clrf	7
+   953  010C  0801               	movf	1,w
+   954  010D  00D1               	movwf	??_liaison_serie
+   955  010E  0851               	movf	??_liaison_serie,w
+   956  010F  00FD               	movwf	_car
+   957  0110  087D               	movf	_car,w
+   958  0111  1903               	btfsc	3,2
+   959  0112  2925               	goto	i1l116
+   960                           
+   961                           ;bouilloire_serie.c: 135: TXREG = car;
+   962                           
+   963                           ;bouilloire_serie.c: 133: while(car!='\0'){
+   964                           
+   965                           ;bouilloire_serie.c: 132: car = chaine_a_emettre[i];
+   966  0113  087D               	movf	_car,w
+   967  0114  0023               	movlb	3	; select bank3
+   968  0115  009A               	movwf	26	;volatile
+   969                           
+   970                           ;bouilloire_serie.c: 136: _delay((unsigned long)((1)*(32000000/4000.0)));
+   971  0116  300B               	movlw	11
+   972  0117  0020               	movlb	0	; select bank0
+   973  0118  00D1               	movwf	??_liaison_serie
+   974  0119  3062               	movlw	98
+   975  011A                     u60_27:	
+   976  011A  0B89               	decfsz	9,f
+   977  011B  291A               	goto	u60_27
+   978  011C  0BD1               	decfsz	??_liaison_serie,f
+   979  011D  291A               	goto	u60_27
+   980  011E  0000               	nop
+   981                           
+   982                           ;bouilloire_serie.c: 137: i ++;
+   983  011F  3001               	movlw	1
+   984  0120  0020               	movlb	0	; select bank0
+   985  0121  07C5               	addwf	_i,f
+   986  0122  3000               	movlw	0
+   987  0123  3DC6               	addwfc	_i+1,f
+   988  0124  2908               	goto	i1l998
+   989  0125                     i1l116:	
+   990                           
+   991                           ;bouilloire_serie.c: 139: }
+   992                           ;bouilloire_serie.c: 140: TXIE = 0;
+   993  0125  0021               	movlb	1	; select bank1
+   994  0126  1211               	bcf	17,4	;volatile
+   995  0127                     i1l117:	
+   996  0127  0020               	movlb	0	; select bank0
+   997  0128  0853               	movf	??_liaison_serie+2,w
+   998  0129  00FF               	movwf	127
+   999  012A  107E               	bcf	126,0	;clear compiler interrupt flag (level 1)
+  1000  012B  0009               	retfie
+  1001  012C                     __end_of_liaison_serie:	
+  1002                           
+  1003                           	psect	text2
+  1004  013A                     __ptext2:	
+  1005 ;; *************** function _compare *****************
+  1006 ;; Defined at:
+  1007 ;;		line 157 in file "bouilloire_serie.c"
+  1008 ;; Parameters:    Size  Location     Type
+  1009 ;;  chaine1         1    wreg     PTR const unsigned char 
+  1010 ;;		 -> reception(10), 
+  1011 ;;  chaine2         2    6[COMMON] PTR const unsigned char 
+  1012 ;;		 -> STR_9(6), STR_7(6), STR_5(6), STR_3(6), 
+  1013 ;;		 -> STR_1(6), 
+  1014 ;; Auto vars:     Size  Location     Type
+  1015 ;;  chaine1         1   10[COMMON] PTR const unsigned char 
+  1016 ;;		 -> reception(10), 
+  1017 ;;  e               2   11[COMMON] int 
+  1018 ;; Return value:  Size  Location     Type
+  1019 ;;                  2    6[COMMON] int 
+  1020 ;; Registers used:
+  1021 ;;		wreg, fsr0l, fsr0h, fsr1l, fsr1h, status,2, status,0, pclath, cstack
+  1022 ;; Tracked objects:
+  1023 ;;		On entry : 0/0
+  1024 ;;		On exit  : 0/0
+  1025 ;;		Unchanged: 0/0
+  1026 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+  1027 ;;      Params:         2       0       0       0
+  1028 ;;      Locals:         3       0       0       0
+  1029 ;;      Temps:          2       0       0       0
+  1030 ;;      Totals:         7       0       0       0
+  1031 ;;Total ram usage:        7 bytes
+  1032 ;; Hardware stack levels used:    1
+  1033 ;; Hardware stack levels required when called:    1
+  1034 ;; This function calls:
+  1035 ;;		_strlen
+  1036 ;; This function is called by:
+  1037 ;;		_liaison_serie
+  1038 ;; This function uses a non-reentrant model
+  1039 ;;
+  1040                           
+  1041                           
+  1042                           ;psect for function _compare
+  1043  013A                     _compare:	
+  1044                           
+  1045                           ;incstack = 0
+  1046                           ; Regs used in _compare: [wreg-fsr1h+status,2+status,0+pclath+cstack]
+  1047                           ;compare@chaine1 stored from wreg
+  1048  013A  00FA               	movwf	compare@chaine1
+  1049  013B  01FB               	clrf	compare@e
+  1050  013C  01FC               	clrf	compare@e+1
+  1051                           
+  1052                           ;bouilloire_serie.c: 159: for(e=0;e<strlen(chaine2);e++)
+  1053  013D  01FB               	clrf	compare@e
+  1054  013E  01FC               	clrf	compare@e+1
+  1055  013F                     i1l822:	
+  1056  013F  0877               	movf	compare@chaine2+1,w
+  1057  0140  00F1               	movwf	strlen@s+1
+  1058  0141  0876               	movf	compare@chaine2,w
+  1059  0142  00F0               	movwf	strlen@s
+  1060  0143  3181  21F2  3181   	fcall	_strlen
+  1061  0146  0871               	movf	?_strlen+1,w
+  1062  0147  027C               	subwf	compare@e+1,w
+  1063  0148  1D03               	skipz
+  1064  0149  294C               	goto	u32_25
+  1065  014A  0870               	movf	?_strlen,w
+  1066  014B  027B               	subwf	compare@e,w
+  1067  014C                     u32_25:	
+  1068  014C  1803               	btfsc	3,0
+  1069  014D  2968               	goto	i1l824
+  1070                           
+  1071                           ;bouilloire_serie.c: 160: if( chaine1[e] != chaine2[e])
+  1072  014E  0876               	movf	compare@chaine2,w
+  1073  014F  077B               	addwf	compare@e,w
+  1074  0150  0084               	movwf	4
+  1075  0151  0877               	movf	compare@chaine2+1,w
+  1076  0152  3D7C               	addwfc	compare@e+1,w
+  1077  0153  0085               	movwf	5
+  1078  0154  0800               	movf	0,w	;code access
+  1079  0155  00F8               	movwf	??_compare
+  1080  0156  087B               	movf	compare@e,w
+  1081  0157  077A               	addwf	compare@chaine1,w
+  1082  0158  00F9               	movwf	??_compare+1
+  1083  0159  0879               	movf	??_compare+1,w
+  1084  015A  0086               	movwf	6
+  1085  015B  0187               	clrf	7
+  1086  015C  0801               	movf	1,w
+  1087  015D  0678               	xorwf	??_compare,w
+  1088  015E  1903               	skipnz
+  1089  015F  2963               	goto	i1l820
+  1090                           
+  1091                           ;bouilloire_serie.c: 161: return 0;
+  1092  0160  01F6               	clrf	?_compare
+  1093  0161  01F7               	clrf	?_compare+1
+  1094  0162  0008               	return
+  1095  0163                     i1l820:	
+  1096  0163  3001               	movlw	1
+  1097  0164  07FB               	addwf	compare@e,f
+  1098  0165  3000               	movlw	0
+  1099  0166  3DFC               	addwfc	compare@e+1,f
+  1100  0167  293F               	goto	i1l822
+  1101  0168                     i1l824:	
+  1102                           
+  1103                           ;bouilloire_serie.c: 162: return 1;
+  1104  0168  3001               	movlw	1
+  1105  0169  00F6               	movwf	?_compare
+  1106  016A  3000               	movlw	0
+  1107  016B  00F7               	movwf	?_compare+1
+  1108  016C  0008               	return
+  1109  016D                     __end_of_compare:	
+  1110                           
+  1111                           	psect	text3
+  1112  01F2                     __ptext3:	
+  1113 ;; *************** function _strlen *****************
+  1114 ;; Defined at:
+  1115 ;;		line 4 in file "C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\strlen.c"
+  1116 ;; Parameters:    Size  Location     Type
+  1117 ;;  s               2    0[COMMON] PTR const unsigned char 
+  1118 ;;		 -> STR_9(6), STR_7(6), STR_5(6), STR_3(6), 
+  1119 ;;		 -> STR_1(6), 
+  1120 ;; Auto vars:     Size  Location     Type
+  1121 ;;  cp              2    4[COMMON] PTR const unsigned char 
+  1122 ;;		 -> STR_9(6), STR_7(6), STR_5(6), STR_3(6), 
+  1123 ;;		 -> STR_1(6), 
+  1124 ;; Return value:  Size  Location     Type
+  1125 ;;                  2    0[COMMON] unsigned int 
+  1126 ;; Registers used:
+  1127 ;;		wreg, fsr0l, fsr0h, status,2, status,0
+  1128 ;; Tracked objects:
+  1129 ;;		On entry : 0/0
+  1130 ;;		On exit  : 0/0
+  1131 ;;		Unchanged: 0/0
+  1132 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+  1133 ;;      Params:         2       0       0       0
+  1134 ;;      Locals:         2       0       0       0
+  1135 ;;      Temps:          2       0       0       0
+  1136 ;;      Totals:         6       0       0       0
+  1137 ;;Total ram usage:        6 bytes
+  1138 ;; Hardware stack levels used:    1
+  1139 ;; This function calls:
+  1140 ;;		Nothing
+  1141 ;; This function is called by:
+  1142 ;;		_compare
+  1143 ;; This function uses a non-reentrant model
+  1144 ;;
+  1145                           
+  1146                           
+  1147                           ;psect for function _strlen
+  1148  01F2                     _strlen:	
+  1149                           
+  1150                           ;incstack = 0
+  1151                           ; Regs used in _strlen: [wreg-fsr0h+status,2+status,0]
+  1152  01F2  0871               	movf	strlen@s+1,w
+  1153  01F3  00F5               	movwf	strlen@cp+1
+  1154  01F4  0870               	movf	strlen@s,w
+  1155  01F5  00F4               	movwf	strlen@cp
+  1156  01F6                     i1l806:	
+  1157  01F6  0874               	movf	strlen@cp,w
+  1158  01F7  0084               	movwf	4
+  1159  01F8  0875               	movf	strlen@cp+1,w
+  1160  01F9  0085               	movwf	5
+  1161  01FA  0012               	moviw fsr0++
+  1162  01FB  1903               	btfsc	3,2
+  1163  01FC  2A02               	goto	i1l808
+  1164  01FD  3001               	movlw	1
+  1165  01FE  07F4               	addwf	strlen@cp,f
+  1166  01FF  3000               	movlw	0
+  1167  0200  3DF5               	addwfc	strlen@cp+1,f
+  1168  0201  29F6               	goto	i1l806
+  1169  0202                     i1l808:	
+  1170  0202  0970               	comf	strlen@s,w
+  1171  0203  00F2               	movwf	??_strlen
+  1172  0204  0971               	comf	strlen@s+1,w
+  1173  0205  00F3               	movwf	??_strlen+1
+  1174  0206  0AF2               	incf	??_strlen,f
+  1175  0207  1903               	skipnz
+  1176  0208  0AF3               	incf	??_strlen+1,f
+  1177  0209  0874               	movf	strlen@cp,w
+  1178  020A  0772               	addwf	??_strlen,w
+  1179  020B  00F0               	movwf	?_strlen
+  1180  020C  0875               	movf	strlen@cp+1,w
+  1181  020D  3D73               	addwfc	??_strlen+1,w
+  1182  020E  00F1               	movwf	?_strlen+1
+  1183  020F  0008               	return
+  1184  0210                     __end_of_strlen:	
+  1185                           
+  1186                           	psect	text4
+  1187  016D                     __ptext4:	
+  1188 ;; *************** function _bouilloire_mode *****************
+  1189 ;; Defined at:
+  1190 ;;		line 165 in file "bouilloire_serie.c"
+  1191 ;; Parameters:    Size  Location     Type
+  1192 ;;  val             1    wreg     unsigned char 
+  1193 ;; Auto vars:     Size  Location     Type
+  1194 ;;  val             1    2[COMMON] unsigned char 
+  1195 ;;  e               2    3[COMMON] int 
+  1196 ;; Return value:  Size  Location     Type
+  1197 ;;                  1    wreg      void 
+  1198 ;; Registers used:
+  1199 ;;		wreg, status,2
+  1200 ;; Tracked objects:
+  1201 ;;		On entry : 0/0
+  1202 ;;		On exit  : 0/0
+  1203 ;;		Unchanged: 0/0
+  1204 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+  1205 ;;      Params:         0       0       0       0
+  1206 ;;      Locals:         3       0       0       0
+  1207 ;;      Temps:          2       0       0       0
+  1208 ;;      Totals:         5       0       0       0
+  1209 ;;Total ram usage:        5 bytes
+  1210 ;; Hardware stack levels used:    1
+  1211 ;; This function calls:
+  1212 ;;		Nothing
+  1213 ;; This function is called by:
+  1214 ;;		_liaison_serie
+  1215 ;; This function uses a non-reentrant model
+  1216 ;;
+  1217                           
+  1218                           
+  1219                           ;psect for function _bouilloire_mode
+  1220  016D                     _bouilloire_mode:	
+  1221                           
+  1222                           ;incstack = 0
+  1223                           ; Regs used in _bouilloire_mode: [wreg+status,2]
+  1224                           ;bouilloire_mode@val stored from wreg
+  1225  016D  00F2               	movwf	bouilloire_mode@val
+  1226                           
+  1227                           ;bouilloire_serie.c: 167: for(int e=0; e<val; e++){
+  1228  016E  01F3               	clrf	bouilloire_mode@e
+  1229  016F  01F4               	clrf	bouilloire_mode@e+1
+  1230  0170                     i1l133:	
+  1231  0170  0874               	movf	bouilloire_mode@e+1,w
+  1232  0171  3A80               	xorlw	128
+  1233  0172  00F0               	movwf	??_bouilloire_mode
+  1234  0173  3080               	movlw	128
+  1235  0174  0270               	subwf	??_bouilloire_mode,w
+  1236  0175  1D03               	skipz
+  1237  0176  2979               	goto	u33_25
+  1238  0177  0872               	movf	bouilloire_mode@val,w
+  1239  0178  0273               	subwf	bouilloire_mode@e,w
+  1240  0179                     u33_25:	
+  1241  0179  1803               	btfsc	3,0
+  1242  017A  0008               	return
+  1243                           
+  1244                           ;bouilloire_serie.c: 168: RA5=!RA5;
+  1245  017B  3020               	movlw	32
+  1246  017C  0020               	movlb	0	; select bank0
+  1247  017D  068C               	xorwf	12,f
+  1248                           
+  1249                           ;bouilloire_serie.c: 169: _delay((unsigned long)((100)*(32000000/4000.0)));
+  1250  017E  3005               	movlw	5
+  1251  017F  00F1               	movwf	??_bouilloire_mode+1
+  1252  0180  300F               	movlw	15
+  1253  0181  00F0               	movwf	??_bouilloire_mode
+  1254  0182  30F1               	movlw	241
+  1255  0183                     u61_27:	
+  1256  0183  0B89               	decfsz	9,f
+  1257  0184  2983               	goto	u61_27
+  1258  0185  0BF0               	decfsz	??_bouilloire_mode,f
+  1259  0186  2983               	goto	u61_27
+  1260  0187  0BF1               	decfsz	??_bouilloire_mode+1,f
+  1261  0188  2983               	goto	u61_27
+  1262  0189  0000               	nop
+  1263                           
+  1264                           ;bouilloire_serie.c: 170: RA5=1;
+  1265  018A  0020               	movlb	0	; select bank0
+  1266  018B  168C               	bsf	12,5	;volatile
+  1267                           
+  1268                           ;bouilloire_serie.c: 171: _delay((unsigned long)((500)*(32000000/4000.0)));
+  1269  018C  3015               	movlw	21
+  1270  018D  00F1               	movwf	??_bouilloire_mode+1
+  1271  018E  304B               	movlw	75
+  1272  018F  00F0               	movwf	??_bouilloire_mode
+  1273  0190  30BE               	movlw	190
+  1274  0191                     u62_27:	
+  1275  0191  0B89               	decfsz	9,f
+  1276  0192  2991               	goto	u62_27
+  1277  0193  0BF0               	decfsz	??_bouilloire_mode,f
+  1278  0194  2991               	goto	u62_27
+  1279  0195  0BF1               	decfsz	??_bouilloire_mode+1,f
+  1280  0196  2991               	goto	u62_27
+  1281  0197  3200               	nop2
+  1282  0198  3001               	movlw	1
+  1283  0199  07F3               	addwf	bouilloire_mode@e,f
+  1284  019A  3000               	movlw	0
+  1285  019B  3DF4               	addwfc	bouilloire_mode@e+1,f
+  1286  019C  2970               	goto	i1l133
+  1287  019D                     __end_of_bouilloire_mode:	
+  1288                           
+  1289                           	psect	text5
+  1290  019D                     __ptext5:	
+  1291 ;; *************** function _COM_Puts *****************
+  1292 ;; Defined at:
+  1293 ;;		line 144 in file "bouilloire_serie.c"
+  1294 ;; Parameters:    Size  Location     Type
+  1295 ;;  s               2    0[COMMON] PTR unsigned char 
+  1296 ;;		 -> STR_10(6), STR_8(6), STR_6(6), STR_4(6), 
+  1297 ;;		 -> STR_2(6), 
+  1298 ;; Auto vars:     Size  Location     Type
+  1299 ;;		None
+  1300 ;; Return value:  Size  Location     Type
+  1301 ;;                  1    wreg      void 
+  1302 ;; Registers used:
+  1303 ;;		wreg, fsr0l, fsr0h, fsr1l, fsr1h, status,2, status,0, pclath
+  1304 ;; Tracked objects:
+  1305 ;;		On entry : 0/0
+  1306 ;;		On exit  : 0/0
+  1307 ;;		Unchanged: 0/0
+  1308 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+  1309 ;;      Params:         2       0       0       0
+  1310 ;;      Locals:         0       0       0       0
+  1311 ;;      Temps:          1       0       0       0
+  1312 ;;      Totals:         3       0       0       0
+  1313 ;;Total ram usage:        3 bytes
+  1314 ;; Hardware stack levels used:    1
+  1315 ;; This function calls:
+  1316 ;;		Nothing
+  1317 ;; This function is called by:
+  1318 ;;		_liaison_serie
+  1319 ;; This function uses a non-reentrant model
+  1320 ;;
+  1321                           
+  1322                           
+  1323                           ;psect for function _COM_Puts
+  1324  019D                     _COM_Puts:	
+  1325                           
+  1326                           ;bouilloire_serie.c: 146: i=0;
+  1327                           
+  1328                           ;incstack = 0
+  1329                           ; Regs used in _COM_Puts: [wreg-fsr1h+status,2+status,0+pclath]
+  1330  019D  0020               	movlb	0	; select bank0
+  1331  019E  01C5               	clrf	_i
+  1332  019F  01C6               	clrf	_i+1
+  1333  01A0                     i1l840:	
+  1334                           ;bouilloire_serie.c: 147: while((car = s[i]) != '\0')
+  1335                           
+  1336  01A0  0870               	movf	COM_Puts@s,w
+  1337  01A1  0745               	addwf	_i,w
+  1338  01A2  0084               	movwf	4
+  1339  01A3  0871               	movf	COM_Puts@s+1,w
+  1340  01A4  3D46               	addwfc	_i+1,w
+  1341  01A5  0085               	movwf	5
+  1342  01A6  0800               	movf	0,w	;code access
+  1343  01A7  00F2               	movwf	??_COM_Puts
+  1344  01A8  0872               	movf	??_COM_Puts,w
+  1345  01A9  00FD               	movwf	_car
+  1346  01AA  087D               	movf	_car,w
+  1347  01AB  1903               	btfsc	3,2
+  1348  01AC  29BA               	goto	i1l842
+  1349                           
+  1350                           ;bouilloire_serie.c: 148: {
+  1351                           ;bouilloire_serie.c: 149: chaine_a_emettre[i] = car;
+  1352  01AD  087D               	movf	_car,w
+  1353  01AE  00F2               	movwf	??_COM_Puts
+  1354  01AF  0845               	movf	_i,w
+  1355  01B0  3E34               	addlw	(low (_chaine_a_emettre| 0))& (0+255)
+  1356  01B1  0086               	movwf	6
+  1357  01B2  0187               	clrf	7
+  1358  01B3  0872               	movf	??_COM_Puts,w
+  1359  01B4  0081               	movwf	1
+  1360                           
+  1361                           ;bouilloire_serie.c: 150: i++ ;
+  1362  01B5  3001               	movlw	1
+  1363  01B6  07C5               	addwf	_i,f
+  1364  01B7  3000               	movlw	0
+  1365  01B8  3DC6               	addwfc	_i+1,f
+  1366  01B9  29A0               	goto	i1l840
+  1367  01BA                     i1l842:	
+  1368                           
+  1369                           ;bouilloire_serie.c: 151: }
+  1370                           ;bouilloire_serie.c: 152: chaine_a_emettre[i] = '\r';
+  1371  01BA  300D               	movlw	13
+  1372  01BB  00F2               	movwf	??_COM_Puts
+  1373  01BC  0845               	movf	_i,w
+  1374  01BD  3E34               	addlw	(low (_chaine_a_emettre| 0))& (0+255)
+  1375  01BE  0086               	movwf	6
+  1376  01BF  0187               	clrf	7
+  1377  01C0  0872               	movf	??_COM_Puts,w
+  1378  01C1  0081               	movwf	1
+  1379                           
+  1380                           ;bouilloire_serie.c: 153: chaine_a_emettre[i] = '\0';
+  1381  01C2  0845               	movf	_i,w
+  1382  01C3  3E34               	addlw	(low (_chaine_a_emettre| 0))& (0+255)
+  1383  01C4  0086               	movwf	6
+  1384  01C5  0187               	clrf	7
+  1385  01C6  0181               	clrf	1
+  1386                           
+  1387                           ;bouilloire_serie.c: 154: TXIE = 1;
+  1388  01C7  0021               	movlb	1	; select bank1
+  1389  01C8  1611               	bsf	17,4	;volatile
+  1390  01C9  0008               	return
+  1391  01CA                     __end_of_COM_Puts:	
+  1392  007E                     btemp	set	126	;btemp
+  1393  007E                     int$flags	set	126
+  1394  007E                     wtemp0	set	126
+
+
+Data Sizes:
+    Strings     60
+    Constant    0
+    Data        0
+    BSS         50
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMMON           14     13      14
+    BANK0            80      3      52
+    BANK1            80      0       0
+    BANK2            80      0       0
+
+Pointer List with Targets:
+
+    strlen@s	PTR const unsigned char  size(2) Largest target is 6
+		 -> STR_9(CODE[6]), STR_7(CODE[6]), STR_5(CODE[6]), STR_3(CODE[6]), 
+		 -> STR_1(CODE[6]), 
+
+    strlen@cp	PTR const unsigned char  size(2) Largest target is 6
+		 -> STR_9(CODE[6]), STR_7(CODE[6]), STR_5(CODE[6]), STR_3(CODE[6]), 
+		 -> STR_1(CODE[6]), 
+
+    compare@chaine2	PTR const unsigned char  size(2) Largest target is 6
+		 -> STR_9(CODE[6]), STR_7(CODE[6]), STR_5(CODE[6]), STR_3(CODE[6]), 
+		 -> STR_1(CODE[6]), 
+
+    compare@chaine1	PTR const unsigned char  size(1) Largest target is 10
+		 -> reception(BANK0[10]), 
+
+    COM_Puts@s	PTR unsigned char  size(2) Largest target is 6
+		 -> STR_10(CODE[6]), STR_8(CODE[6]), STR_6(CODE[6]), STR_4(CODE[6]), 
+		 -> STR_2(CODE[6]), 
+
+
+Critical Paths under _main in COMMON
+
+    None.
+
+Critical Paths under _liaison_serie in COMMON
+
+    _liaison_serie->_compare
+    _compare->_strlen
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Critical Paths under _liaison_serie in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _liaison_serie in BANK1
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Critical Paths under _liaison_serie in BANK2
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 0     0      0       0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 0
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (1) _liaison_serie                                        3     3      0    1011
+                                              0 BANK0      3     3      0
+                           _COM_Puts
+                    _bouilloire_mode
+                            _compare
+ ---------------------------------------------------------------------------------
+ (2) _compare                                              7     5      2     678
+                                              6 COMMON     7     5      2
+                             _strlen
+ ---------------------------------------------------------------------------------
+ (3) _strlen                                               6     4      2     143
+                                              0 COMMON     6     4      2
+ ---------------------------------------------------------------------------------
+ (2) _bouilloire_mode                                      5     5      0      46
+                                              0 COMMON     5     5      0
+ ---------------------------------------------------------------------------------
+ (2) _COM_Puts                                             3     1      2     287
+                                              0 COMMON     3     1      2
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 3
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+
+ _liaison_serie (ROOT)
+   _COM_Puts
+   _bouilloire_mode
+   _compare
+     _strlen
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BIGRAM              F0      0       0       0        0.0%
+EEDATA             100      0       0       0        0.0%
+NULL                 0      0       0       0        0.0%
+CODE                 0      0       0       0        0.0%
+BITCOMMON            E      0       0       1        0.0%
+BITSFR0              0      0       0       1        0.0%
+SFR0                 0      0       0       1        0.0%
+COMMON               E      D       E       2      100.0%
+BITSFR1              0      0       0       2        0.0%
+SFR1                 0      0       0       2        0.0%
+BITSFR2              0      0       0       3        0.0%
+SFR2                 0      0       0       3        0.0%
+STACK                0      0       0       3        0.0%
+BITSFR3              0      0       0       4        0.0%
+SFR3                 0      0       0       4        0.0%
+ABS                  0      0      42       4        0.0%
+BITBANK0            50      0       0       5        0.0%
+BITSFR4              0      0       0       5        0.0%
+SFR4                 0      0       0       5        0.0%
+BANK0               50      3      34       6       65.0%
+BITSFR5              0      0       0       6        0.0%
+SFR5                 0      0       0       6        0.0%
+BITBANK1            50      0       0       7        0.0%
+BITSFR6              0      0       0       7        0.0%
+SFR6                 0      0       0       7        0.0%
+BANK1               50      0       0       8        0.0%
+BITSFR7              0      0       0       8        0.0%
+SFR7                 0      0       0       8        0.0%
+BITBANK2            50      0       0       9        0.0%
+BITSFR8              0      0       0       9        0.0%
+SFR8                 0      0       0       9        0.0%
+BANK2               50      0       0      10        0.0%
+BITSFR9              0      0       0      10        0.0%
+SFR9                 0      0       0      10        0.0%
+BITSFR10             0      0       0      11        0.0%
+SFR10                0      0       0      11        0.0%
+DATA                 0      0      42      11        0.0%
+BITSFR11             0      0       0      12        0.0%
+SFR11                0      0       0      12        0.0%
+BITSFR12             0      0       0      13        0.0%
+SFR12                0      0       0      13        0.0%
+BITSFR13             0      0       0      14        0.0%
+SFR13                0      0       0      14        0.0%
+BITSFR14             0      0       0      15        0.0%
+SFR14                0      0       0      15        0.0%
+BITSFR15             0      0       0      16        0.0%
+SFR15                0      0       0      16        0.0%
+BITSFR16             0      0       0      17        0.0%
+SFR16                0      0       0      17        0.0%
+BITSFR17             0      0       0      18        0.0%
+SFR17                0      0       0      18        0.0%
+BITSFR18             0      0       0      19        0.0%
+SFR18                0      0       0      19        0.0%
+BITSFR19             0      0       0      20        0.0%
+SFR19                0      0       0      20        0.0%
+BITSFR20             0      0       0      21        0.0%
+SFR20                0      0       0      21        0.0%
+BITSFR21             0      0       0      22        0.0%
+SFR21                0      0       0      22        0.0%
+BITSFR22             0      0       0      23        0.0%
+SFR22                0      0       0      23        0.0%
+BITSFR23             0      0       0      24        0.0%
+SFR23                0      0       0      24        0.0%
+BITSFR24             0      0       0      25        0.0%
+SFR24                0      0       0      25        0.0%
+BITSFR25             0      0       0      26        0.0%
+SFR25                0      0       0      26        0.0%
+BITSFR26             0      0       0      27        0.0%
+SFR26                0      0       0      27        0.0%
+BITSFR27             0      0       0      28        0.0%
+SFR27                0      0       0      28        0.0%
+BITSFR28             0      0       0      29        0.0%
+SFR28                0      0       0      29        0.0%
+BITSFR29             0      0       0      30        0.0%
+SFR29                0      0       0      30        0.0%
+BITSFR30             0      0       0      31        0.0%
+SFR30                0      0       0      31        0.0%
+BITSFR31             0      0       0      32        0.0%
+SFR31                0      0       0      32        0.0%
+
+
+Microchip Technology PIC Macro Assembler V1.45 build -152302408 
+Symbol Table                                                                                   Mon May 14 20:46:43 2018
+
+                       _i 0045               __CFG_CP$OFF 0000                        l87 01F1  
+                     _GIE 005F                       _RA4 0064                       _RA5 0065  
+            __CFG_CPD$OFF 0000                       _car 007D          _chaine_a_emettre 0034  
+                     wreg 0009                      STR_1 0210                      STR_2 022E  
+                    STR_3 0216                      STR_4 0234                      STR_5 021C  
+                    STR_6 023A                      STR_7 0222                      STR_8 0240  
+                    STR_9 0228                      _BRGH 0CF2                      _CREN 0CEC  
+                    _PEIE 005E                      _RCIE 048D                      _RCIF 008D  
+                    _SPEN 0CEF                      _TXIE 048C                      _TXEN 0CF5  
+                    _TXIF 008C                      _SYNC 0CF4                      _main 01CA  
+                    fsr0h 0005                      fsr1h 0007                      indf0 0000  
+                    fsr0l 0004                      indf1 0001                      fsr1l 0006  
+                    btemp 007E                      start 012C             __CFG_IESO$OFF 0000  
+        __end_of_COM_Puts 01CA                     ?_main 0070                     STR_10 0246  
+                   STR_11 0215                     _BRG16 0CFB             __CFG_WDTE$OFF 0000  
+                   i1l116 0125                     i1l133 0170                     i1l117 0127  
+                   i1l820 0163                     i1l806 01F6                     i1l822 013F  
+                   i1l840 01A0                     i1l808 0202                     i1l824 0168  
+                   i1l842 01BA                     i1l922 003D                     i1l950 0085  
+                   i1l942 0071                     i1l934 005D                     i1l970 00C6  
+                   i1l980 00E4                     i1l974 00D6                     i1l958 009F  
+                   i1l986 00FC                     i1l988 00FF                     i1l998 0108  
+                   _RCREG 0199                     u32_25 014C                     u33_25 0179  
+                   _SPBRG 019B                     _PORTA 000C                     u60_27 011A  
+                   u53_25 00D4                     u61_27 0183                     u54_25 00E2  
+                   u62_27 0191                     u55_25 00FA                     u59_27 00BA  
+                   _WPUA2 1062                     _WPUA3 1063                     _TXREG 019A  
+          __CFG_FCMEN$OFF 0000           __end_of_compare 016D    __size_of_liaison_serie 0128  
+          __CFG_BOREN$OFF 0000                     status 0003                     wtemp0 007E  
+          __CFG_MCLRE$OFF 0000           __initialization 012E              __end_of_main 01F2  
+                  ??_main 0054                    _ADCON0 009D           _bouilloire_mode 016D  
+                  _APFCON 011D                    _ANSELA 018C                    _OSCCON 0099  
+                  _TRISA0 0460                    _TRISA1 0461                    _TRISA2 0462  
+                  _TRISA3 0463                    _TRISA4 0464                    _TRISA5 0465  
+          __CFG_PWRTE$OFF 0000                    _nWPUEN 04AF             _liaison_serie 0004  
+                  _strlen 01F2                 ??_compare 0078   __end_of__initialization 0136  
+               ?_COM_Puts 0070                 COM_Puts@s 0070            __pcstackCOMMON 0070  
+          ?_liaison_serie 0070   __end_of_bouilloire_mode 019D                __pbssBANK0 0020  
+              ??_COM_Puts 0072                __pmaintext 01CA                __pintentry 0004  
+                 ?_strlen 0070           ??_liaison_serie 0051            compare@chaine1 007A  
+          compare@chaine2 0076        bouilloire_mode@val 0072                   __ptext2 013A  
+                 __ptext3 01F2                   __ptext4 016D                   __ptext5 019D  
+                 _command 0020                   _compare 013A           __size_of_strlen 001E  
+        ?_bouilloire_mode 0070                   clrloop0 024D      end_of_initialization 0136  
+                 strlen@s 0070          __CFG_FOSC$INTOSC 0000         __size_of_COM_Puts 002D  
+          __end_of_strlen 0210       start_initialization 012E                  ??_strlen 0072  
+             __pbssCOMMON 007D                 ___latbits 0001             __pcstackBANK0 0051  
+                ?_compare 0076                 _reception 0047                  _COM_Puts 019D  
+               clear_ram0 024C     __end_of_liaison_serie 012C  __size_of_bouilloire_mode 0030  
+        __size_of_compare 0033          bouilloire_mode@e 0073             __size_of_main 0028  
+                int$flags 007E                  compare@e 007B            __pstringtext10 0246  
+          __pstringtext11 0000                  intlevel1 0000         __CFG_CLKOUTEN$OFF 0000  
+       ??_bouilloire_mode 0070             __pstringtext1 0210             __pstringtext2 0216  
+           __pstringtext3 021C             __pstringtext4 0222             __pstringtext5 0228  
+           __pstringtext6 022E             __pstringtext7 0234             __pstringtext8 023A  
+           __pstringtext9 0240                  strlen@cp 0074  

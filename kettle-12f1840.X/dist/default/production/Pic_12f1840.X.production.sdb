@@ -1,0 +1,144 @@
+[p LITE_MODE AUTOSTATIC PIC14 PIC14E ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 12F1840 ]
+[d frameptr 6 ]
+"46 C:\Users\fred\Documents\microcontroleur\Pic 12f1840.X\bouilloire_serie.c
+[v _main main `(i  1 e 2 0 ]
+"88
+[v _liaison_serie liaison_serie `II(v  1 e 1 0 ]
+"144
+[v _COM_Puts COM_Puts `(v  1 e 1 0 ]
+"157
+[v _compare compare `(i  1 e 2 0 ]
+"165
+[v _bouilloire_mode bouilloire_mode `(v  1 e 1 0 ]
+"62 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\float.c
+[v ___ftpack __ftpack `(f  1 e 3 0 ]
+"86 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\ftadd.c
+[v ___ftadd __ftadd `(f  1 e 3 0 ]
+"4 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\strlen.c
+[v _strlen strlen `(ui  1 e 2 0 ]
+"6 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\pic\eeprom.c
+[v _eecpymem eecpymem `(v  1 e 1 0 ]
+"39
+[v _memcpyee memcpyee `(v  1 e 1 0 ]
+"30 C:\Users\fred\Documents\microcontroleur\Pic 12f1840.X\bouilloire_serie.c
+[v _chaine_a_emettre chaine_a_emettre `[17]uc  1 e 17 0 ]
+"31
+[v _car car `uc  1 e 1 0 ]
+"32
+[v _i i `i  1 e 2 0 ]
+"34
+[v _reception reception `[10]uc  1 e 10 0 ]
+"427 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic12f1840.h
+[v _PORTA PORTA `VEuc  1 e 1 @12 ]
+"1403
+[v _OSCCON OSCCON `VEuc  1 e 1 @153 ]
+"1584
+[v _ADCON0 ADCON0 `VEuc  1 e 1 @157 ]
+"2251
+[v _APFCON APFCON `VEuc  1 e 1 @285 ]
+"2393
+[v _ANSELA ANSELA `VEuc  1 e 1 @396 ]
+"2668
+[v _RCREG RCREG `VEuc  1 e 1 @409 ]
+"2688
+[v _TXREG TXREG `VEuc  1 e 1 @410 ]
+"2720
+[v _SPBRG SPBRG `VEuc  1 e 1 @411 ]
+"4901
+[v _BRG16 BRG16 `VEb  1 e 0 @3323 ]
+"4903
+[v _BRGH BRGH `VEb  1 e 0 @3314 ]
+"5019
+[v _CREN CREN `VEb  1 e 0 @3308 ]
+"5073
+[v _GIE GIE `VEb  1 e 0 @95 ]
+"5239
+[v _PEIE PEIE `VEb  1 e 0 @94 ]
+"5269
+[v _RA4 RA4 `VEb  1 e 0 @100 ]
+"5271
+[v _RA5 RA5 `VEb  1 e 0 @101 ]
+"5277
+[v _RCIE RCIE `VEb  1 e 0 @1165 ]
+"5279
+[v _RCIF RCIF `VEb  1 e 0 @141 ]
+"5317
+[v _SPEN SPEN `VEb  1 e 0 @3311 ]
+"5383
+[v _SYNC SYNC `VEb  1 e 0 @3316 ]
+"5463
+[v _TRISA0 TRISA0 `VEb  1 e 0 @1120 ]
+"5465
+[v _TRISA1 TRISA1 `VEb  1 e 0 @1121 ]
+"5467
+[v _TRISA2 TRISA2 `VEb  1 e 0 @1122 ]
+"5469
+[v _TRISA3 TRISA3 `VEb  1 e 0 @1123 ]
+"5471
+[v _TRISA4 TRISA4 `VEb  1 e 0 @1124 ]
+"5473
+[v _TRISA5 TRISA5 `VEb  1 e 0 @1125 ]
+"5499
+[v _TXEN TXEN `VEb  1 e 0 @3317 ]
+"5501
+[v _TXIE TXIE `VEb  1 e 0 @1164 ]
+"5503
+[v _TXIF TXIF `VEb  1 e 0 @140 ]
+"5527
+[v _WPUA2 WPUA2 `VEb  1 e 0 @4194 ]
+"5529
+[v _WPUA3 WPUA3 `VEb  1 e 0 @4195 ]
+"5561
+[v _nWPUEN nWPUEN `VEb  1 e 0 @1199 ]
+"46 C:\Users\fred\Documents\microcontroleur\Pic 12f1840.X\bouilloire_serie.c
+[v _main main `(i  1 e 2 0 ]
+{
+"87
+} 0
+"88
+[v _liaison_serie liaison_serie `II(v  1 e 1 0 ]
+{
+"142
+} 0
+"157
+[v _compare compare `(i  1 e 2 0 ]
+{
+[v compare@chaine1 chaine1 `*.4DCuc  1 a 1 wreg ]
+"158
+[v compare@e e `i  1 a 2 11 ]
+"157
+[v compare@chaine1 chaine1 `*.4DCuc  1 a 1 wreg ]
+[v compare@chaine2 chaine2 `*.25DCuc  1 p 2 6 ]
+[v compare@chaine1 chaine1 `*.4DCuc  1 a 1 10 ]
+"163
+} 0
+"4 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\strlen.c
+[v _strlen strlen `(ui  1 e 2 0 ]
+{
+"6
+[v strlen@cp cp `*.25DCuc  1 a 2 4 ]
+"4
+[v strlen@s s `*.25DCuc  1 p 2 0 ]
+"13
+} 0
+"165 C:\Users\fred\Documents\microcontroleur\Pic 12f1840.X\bouilloire_serie.c
+[v _bouilloire_mode bouilloire_mode `(v  1 e 1 0 ]
+{
+[v bouilloire_mode@val val `uc  1 a 1 wreg ]
+"167
+[v bouilloire_mode@e e `i  1 a 2 3 ]
+"165
+[v bouilloire_mode@val val `uc  1 a 1 wreg ]
+"167
+[v bouilloire_mode@val val `uc  1 a 1 2 ]
+"173
+} 0
+"144
+[v _COM_Puts COM_Puts `(v  1 e 1 0 ]
+{
+[v COM_Puts@s s `*.25uc  1 p 2 0 ]
+"155
+} 0
