@@ -1,8 +1,8 @@
 /*
  * File:   12f1840_1.c
- * Author: hugues
+ * Author: fred
  *
- * Created on 6 janvier 2016, 14:39
+ * Created on 6 mars 2018, 14:39
  */
 
 #include <xc.h>
