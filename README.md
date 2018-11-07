@@ -45,7 +45,7 @@ Commandes:
   * |eau60|     
     * reponse:    |ok60|
   * |eau70|     
-  ** reponse:    |ok70|
+    * reponse:    |ok70|
   * |eau80|     
     * reponse:    |ok80|
   * |eau90|     
